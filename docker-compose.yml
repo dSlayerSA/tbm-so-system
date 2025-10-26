@@ -1,0 +1,66 @@
+#version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ordersdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+
+  api:
+    build:
+      context: .
+      dockerfile: OrdersApi/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=ordersdb;Username=postgres;Password=postgres
+      # Ensure a connection string is available in compose for local development.
+      # If you prefer to use an external environment variable, set AZURE_SERVICEBUS_CONNECTIONSTRING
+      - "AzureServiceBus__ConnectionString=Endpoint=sb://developer-bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=s8hx5v+HDqo0NUOn9jU0AW9v2+CJ0sKzd+ASbKOA8BA="
+      - AzureServiceBus__QueueName=orders
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+  worker:
+    build:
+      context: .
+      dockerfile: Worker/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=ordersdb;Username=postgres;Password=postgres
+      - "AzureServiceBus__ConnectionString=Endpoint=sb://developer-bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=s8hx5v+HDqo0NUOn9jU0AW9v2+CJ0sKzd+ASbKOA8BA="
+      - AzureServiceBus__QueueName=orders
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./order-management-frontend
+    environment:
+      - VITE_API_URL=http://api:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --spider -q http://localhost:3000 || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
