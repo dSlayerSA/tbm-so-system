@@ -35,35 +35,35 @@ const OrderForm = ({ onCreated }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto p-6 bg-white rounded-lg shadow">
+  <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto p-6 bg-gray-900 rounded-lg shadow border border-gray-700">
       <div>
-        <label htmlFor="cliente" className="block text-sm font-medium text-gray-700">Cliente</label>
+        <label htmlFor="cliente" className="block text-sm font-medium text-gray-200">Cliente</label>
         <input
           id="cliente"
           name="cliente"
           value={form.cliente}
           onChange={handleChange}
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          className="mt-1 block w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="Nome do cliente"
         />
       </div>
 
       <div>
-        <label htmlFor="produto" className="block text-sm font-medium text-gray-700">Produto</label>
+        <label htmlFor="produto" className="block text-sm font-medium text-gray-200">Produto</label>
         <input
           id="produto"
           name="produto"
           value={form.produto}
           onChange={handleChange}
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          className="mt-1 block w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="Nome do produto"
         />
       </div>
 
       <div>
-        <label htmlFor="valor" className="block text-sm font-medium text-gray-700">Valor</label>
+        <label htmlFor="valor" className="block text-sm font-medium text-gray-200">Valor</label>
         <input
           id="valor"
           name="valor"
@@ -73,7 +73,7 @@ const OrderForm = ({ onCreated }: Props) => {
           value={form.valor}
           onChange={handleChange}
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+          className="mt-1 block w-full border border-gray-700 bg-gray-800 text-gray-100 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="0.00"
         />
       </div>
