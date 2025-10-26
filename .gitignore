@@ -137,3 +137,41 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+
+# ========================
+# .NET / C# build outputs
+# ========================
+
+# Build directories
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Visual Studio / VSCode files
+*.user
+*.suo
+*.userosscache
+.vscode/
+
+# Build artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# Logs
+*.log
+
+# Temporary files
+~$*
+*.tmp
+*.temp
