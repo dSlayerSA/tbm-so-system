@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-gray-800 rounded-lg shadow-xl p-6 transition-transform hover:scale-[1.02];
+  }
+  
+  .stat-card {
+    @apply card flex flex-col gap-2;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold text-blue-400;
+  }
+
+  .stat-label {
+    @apply text-sm text-gray-400;
+  }
+
+  .chart-container {
+    @apply card p-4 h-[300px];
+  }
+}
