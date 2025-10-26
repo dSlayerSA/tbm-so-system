@@ -1,0 +1,9 @@
+# ignore the local dotnet sdk tarball and node_modules, dist etc
+dotnet-sdk-*.tar.gz
+node_modules
+**/node_modules
+dist
+dist/
+build
+.vscode
+.git
