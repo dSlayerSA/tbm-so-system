@@ -1,30 +1,30 @@
-# Generated Orders API + Worker
+# API de Pedidos Gerados + Worker
 
-This is a generated .NET 8 solution with an Orders API and a background Worker that processes order messages via Azure Service Bus and persists orders in PostgreSQL.
+Esta é uma solução .NET 8 gerada com uma API de Pedidos e um Worker em segundo plano que processa mensagens de pedidos via Barramento de Serviço do Azure e persiste os pedidos no PostgreSQL.
 
-Features:
-- POST /orders : create order (initial status = Pendente)
-- GET /orders : list orders
-- GET /orders/{id} : get order details
-- Azure Service Bus publisher on create
-- Worker consumes messages, updates status Pendente -> Processando -> Finalizado
-- EF Core with PostgreSQL
-- Health checks for API, DB, and Service Bus
-- Docker Compose with api, worker, postgres and pgadmin
+Recursos:
+- POST /orders: cria pedido (status inicial = Pendente)
+- GET /orders: lista pedidos
+- GET /orders/{id}: obtém detalhes do pedido
+- Publicador do Barramento de Serviço do Azure na criação
+- Worker consome mensagens, atualiza o status Pendente -> Processando -> Finalizado
+- EF Core com PostgreSQL
+- Verificações de integridade para API, BD e Barramento de Serviço
+- Docker Compose com api, worker, postgres e pgadmin
 
-Quick start (requires Docker):
-1. Copy `.env.example` to `.env` and adjust values.
-2. From this folder run:
+Início rápido (requer Docker):
+1. Copie `.env.example` para `.env` e ajuste os valores.
+2. A partir desta pasta, execute:
 
 ```powershell
 docker compose up --build
 ```
 
-API will be available at `http://localhost:5000` (or per docker-compose ports).
+A API estará disponível em `http://localhost:5000` (ou por portas do docker-compose).
 
-Frontend will be available at `http://localhost:3000` once the `frontend` service is built by docker-compose.
+O frontend estará disponível em `http://localhost:3000` assim que o serviço `frontend` for criado pelo docker-compose.
 
-For local frontend development (without docker):
+Para desenvolvimento frontend local (sem docker):
 
 ```bash
 cd order-management-frontend
@@ -33,33 +33,33 @@ npm install
 npm run dev
 ```
 
-Development Mode (No Azure Service Bus):
-- When `AZURE_SERVICEBUS_CONNECTIONSTRING` is empty or not set:
-  - The API will log messages locally instead of publishing to Azure
-  - The Worker will process orders directly from the database
-  - Orders will still transition through all states: Pendente → Processando → Finalizado
-  - The system is fully functional for development and testing
+Modo de Desenvolvimento (Sem Barramento de Serviço do Azure):
+- Quando `AZURE_SERVICEBUS_CONNECTIONSTRING` estiver vazio ou não definido:
+- A API registrará as mensagens localmente em vez de publicá-las no Azure
+- O Worker processará os pedidos diretamente do banco de dados
+- Os pedidos ainda transitarão por todos os estados: Pendente → Processando → Finalizado
+- O sistema está totalmente funcional para desenvolvimento e testes
 
-Testing the Flow:
-1. Create an order:
+Testando o Fluxo:
+1. Crie um pedido:
 ```bash
 curl -X POST http://localhost:5000/orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "cliente": "João Silva",
-    "produto": "Produto Teste",
-    "valor": 99.90
-  }'
+-H "Content-Type: application/json" \
+-d '{
+"cliente": "João Silva",
+"produto": "Produto Teste",
+"valor": 99,90
+}'
 ```
 
-2. Watch the Worker logs:
+2. Observe os logs do Worker:
 ```bash
 docker compose logs -f worker
 ```
 
-3. Check order status:
+3. Verifique o status do pedido:
 ```bash
 curl http://localhost:5000/orders
 ```
 
-Note: For production deployment, you'll need to configure Azure Service Bus.
+Observação: para implantação em produção, você precisará configurar o Barramento de Serviço do Azure.
