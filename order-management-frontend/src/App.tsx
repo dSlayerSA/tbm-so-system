@@ -9,11 +9,11 @@ const App: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Order Management System</h1>
+        <h1 className="text-2xl font-bold">Sistema de Ordem de Serviço</h1>
         <nav className="space-x-4">
           <Link to="/" className="text-blue-600 hover:text-blue-800">Dashboard</Link>
-          <Link to="/orders" className="text-blue-600 hover:text-blue-800">Orders</Link>
-          <Link to="/orders/create" className="text-blue-600 hover:text-blue-800">Create</Link>
+          <Link to="/orders" className="text-blue-600 hover:text-blue-800">lista de OS</Link>
+          <Link to="/orders/create" className="text-blue-600 hover:text-blue-800">Criar OS</Link>
         </nav>
       </header>
 

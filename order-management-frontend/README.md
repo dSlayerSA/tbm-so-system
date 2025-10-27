@@ -1,77 +1,73 @@
-# Order Management System
+# Sistema de Gerenciamento de Pedidos
 
-This is a simple order management system built with React and TailwindCSS. The application allows users to list, create, and view order details.
+Este é um sistema simples de gerenciamento de pedidos desenvolvido com React e TailwindCSS. O aplicativo permite que os usuários listem, criem e visualizem detalhes dos pedidos.
 
-## Project Structure
+## Estrutura do Projeto
 
 ```
 order-management-frontend
-├── index.html          # Main HTML entry point
-├── package.json        # NPM configuration file
-├── tsconfig.json       # TypeScript configuration file
-├── vite.config.ts      # Vite configuration file
-├── tailwind.config.js   # TailwindCSS configuration file
-├── postcss.config.js   # PostCSS configuration file
-├── .gitignore          # Git ignore file
+├── index.html # Ponto de entrada HTML principal
+├── package.json # Arquivo de configuração do NPM
+├── tsconfig.json # Arquivo de configuração do TypeScript
+├── vite.config.ts # Arquivo de configuração do Vite
+├── tailwind.config.js # Arquivo de configuração do TailwindCSS
+├── postcss.config.js # Arquivo de configuração do PostCSS
+├── .gitignore # Arquivo de ignorar do Git
 └── src
-    ├── main.tsx       # Entry point for the React application
-    ├── App.tsx        # Main App component
-    ├── index.css      # Global CSS styles
-    ├── pages
-    │   ├── OrdersList.tsx   # Component to display a list of orders
-    │   ├── OrderCreate.tsx   # Component for creating new orders
-    │   └── OrderDetails.tsx  # Component for viewing order details
-    ├── components
-    │   ├── OrderList.tsx     # Renders the list of orders
-    │   ├── OrderForm.tsx     # Used for creating or editing orders
-    │   └── OrderCard.tsx     # Represents a single order in the list
-    ├── services
-    │   └── api.ts            # Functions for making API calls related to orders
-    ├── hooks
-    │   └── useOrders.ts      # Custom hook for managing orders
-    ├── types
-    │   └── order.ts          # TypeScript interfaces related to orders
-    └── utils
-        └── formatDate.ts     # Utility function for formatting dates
+├── main.tsx # Ponto de entrada para o aplicativo React
+├── App.tsx # Componente principal do aplicativo
+├── index.css # Global Estilos CSS
+├── páginas
+│ ├── OrdersList.tsx # Componente para exibir uma lista de pedidos
+│ ├── OrderCreate.tsx # Componente para criar novos pedidos
+│ └── OrderDetails.tsx # Componente para visualizar detalhes do pedido
+├── componentes
+│ ├── OrderList.tsx # Renderiza a lista de pedidos
+│ ├── OrderForm.tsx # Usado para criar ou editar pedidos
+│ └── OrderCard.tsx # Representa um único pedido na lista
+├── serviços
+│ └── api.ts # Funções para fazer chamadas de API relacionadas a pedidos
+├── hooks
+│ └── useOrders.ts # Hook personalizado para gerenciar pedidos
+├── types
+│ └── order.ts # Interfaces TypeScript relacionadas a pedidos
+└── utils
+└── formatDate.ts # Função utilitária para formatar datas
 ```
 
-## Getting Started
+## Começando
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
+1. Clone o repositório:
+```
+git clone <url-do-repositório>
+```
 
-2. Navigate to the project directory:
-   ```
-   cd order-management-frontend
-   ```
+2. Navegue até o diretório do projeto:
+```
+cd order-management-frontend
+```
 
-3. Install the dependencies:
-   ```
-   npm install
-   ```
+3. Instale as dependências:
+```
+npm install
+```
 
-4. Start the development server:
-   ```
-   npm run dev
-   ```
+4. Inicie o servidor de desenvolvimento:
+```
+npm run dev
+```
 
-5. Open your browser and go to `http://localhost:3000` to see the application in action.
+5. Abra seu navegador e acesse `http://localhost:3000` para ver o aplicativo em ação.
 
-## Features
+## Recursos
 
-- List all orders
-- Create new orders
-- View details of a specific order
+- Listar todos os pedidos
+- Criar novos pedidos
+- Ver detalhes de um pedido específico
 
-## Technologies Used
+## Tecnologias Utilizadas
 
 - React
 - TypeScript
 - TailwindCSS
 - Vite
-
-## License
-
-This project is licensed under the MIT License.
